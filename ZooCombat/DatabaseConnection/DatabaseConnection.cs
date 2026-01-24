@@ -12,25 +12,22 @@ namespace ZooCombat.DatabaseConnection
         private const string DefaultConnectionString =
 @"Server=localhost\SQLEXPRESS;Database=zoocombat;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;";
         string connectionString = DefaultConnectionString;
-        string query = "SELECT * FROM ANIMAL";
-        public void SqlQuery(string query)
+        public int? SqlLogIn(string query, Dictionary<string, object>? parameters)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    foreach (var p in parameters)
                     {
-                        while (reader.Read())
-                        {
-                            //Console.Write(reader["AnimalName"]);
-                            //Console.Write(" has ");
-                            //Console.Write(reader["AnimalAP"]);
-                            //Console.Write(" AP");
-                            //Console.WriteLine();
-                        }
+                        command.Parameters.AddWithValue(p.Key, p.Value ?? DBNull.Value);
                     }
+                    object? result = command.ExecuteScalar();
+
+                    if (result==null || result==DBNull.Value)
+                        return null;
+                    return (int)result;
                 }
             }
         }
