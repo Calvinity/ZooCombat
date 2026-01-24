@@ -20,8 +20,10 @@ namespace ZooCombat.ZooCombatMenu
             Console.WriteLine("9 Exit");
             Console.WriteLine("3");
             Console.WriteLine("4");
+            Console.WriteLine();
+            Console.Write("Enter Option: ");
 
-            switch(Console.ReadLine())
+            switch (Console.ReadLine())
             {
                 case "1":
                     {
@@ -32,7 +34,7 @@ namespace ZooCombat.ZooCombatMenu
                 case "2":
                     {
                         PlayerAcc pa = new PlayerAcc();
-                        pa.CreatePlayer();
+                        pa.LogInPLayer();
                         break;
                     }
                 case "9":
