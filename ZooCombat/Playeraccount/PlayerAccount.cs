@@ -7,6 +7,16 @@ namespace ZooCombat.PlayerAccount
 {
     internal class PlayerAcc
     {
+        public class CurrentPlayer
+        {
+            int currentID;
+            string playerName;
+
+            public CurrentPlayer(int? currentID)
+            {
+                currentID = currentID;
+            }
+         }
         public void CreatePlayer()
         {
             Console.Write("Create Account: ");
@@ -69,6 +79,7 @@ namespace ZooCombat.PlayerAccount
             else
             {
                 Console.WriteLine($"Logged in. PlayerID = {playerId}");
+                CurrentPlayer currentPlayer = new CurrentPlayer(playerId);
             }
         }
     }
