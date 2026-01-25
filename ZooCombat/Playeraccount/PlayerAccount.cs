@@ -54,19 +54,22 @@ namespace ZooCombat.PlayerAccount
             var dc = new DatabaseConnect();
 
             string sql =
-                "SELECT PlayerID_PK FROM Player WHERE UserName = @UserName AND PasswordHash = @PasswordHash;";
+                "SELECT PlayerID FROM Player WHERE UserName = @UserName AND PasswordHash = @PasswordHash;";
 
             var parameters = new Dictionary<string, object>
             {
                 ["@UserName"] = playerName,
                 ["@PasswordHash"] = passwordHash
             };
-
-            int? rows = dc.SqlLogIn(sql, parameters);
-
-            Console.WriteLine(rows == 1
-                ? "Logged In"
-                : "Log-In Failed.");
+            int? playerId = dc.SqlLogIn(sql, parameters);
+            if (playerId is null)
+            {
+                Console.WriteLine("Log-In Failed.");
+            }
+            else
+            {
+                Console.WriteLine($"Logged in. PlayerID = {playerId}");
+            }
         }
     }
 }
