@@ -7,9 +7,10 @@ using ZooCombat.PlayerAccount;
 
 namespace ZooCombat.ZooCombatMenu
 {
-    internal class ZooMenu
+    internal class ZooMenucls
     {
-        public ZooMenu()
+        public static bool ZooMenu()
+            //ville/föreslog static men spelar det någon roll? är det någon skillnad mer än att det är enklare att alltid skriva zoomenucls.zoomenu istället för instance.zoomenu?
         {
             Console.WriteLine("Welcome to ZooCombat!");
             Console.WriteLine();
@@ -29,19 +30,24 @@ namespace ZooCombat.ZooCombatMenu
                     {
                         PlayerAcc pa = new PlayerAcc();
                         pa.CreatePlayer();
-                        break;
+                        return true;
                     }
                 case "2":
                     {
                         PlayerAcc pa = new PlayerAcc();
                         pa.LogInPLayer();
-                        break;
+                        return true;
                     }
                 case "9":
                     {
                         Console.Clear();
                         Console.WriteLine("Goodbye");
-                        return;
+                        return false;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Invalid option. Please try again.");
+                        return true;
                     }
             }
         }

@@ -12,9 +12,14 @@ namespace ZooCombat
     {
         static void Main(string[] args)
         {
-            ZooMenu zm = new ZooMenu();
+            bool isRunning = true;
+            ZooMenucls zm = new ZooMenucls();
             //PlayerAcc pa = new PlayerAcc();
             //pa.CreatePlayer();
+            while (isRunning == true)
+            {
+                isRunning = ZooMenucls.ZooMenu();
+            }
         }
     }
 }
