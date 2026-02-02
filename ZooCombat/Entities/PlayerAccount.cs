@@ -3,23 +3,23 @@ using System.Security.Cryptography;
 using System.Text;
 using ZooCombat.DatabaseConnection;
 
-namespace ZooCombat.PlayerAccount
+namespace ZooCombat.Entities
 {
     internal class PlayerAcc
     {
-        public class CurrentPlayer
-        {
-            int currentID;
-            string playerName;
+        //public class CurrentPlayer
+        //{
+        //    int currentID;
+        //    string playerName;
 
-            public CurrentPlayer(int? currentID)
-            {
-                currentID = currentID;
-            }
-         }
+        //    public CurrentPlayer()
+        //    {
+        //        currentID = currentID;
+        //    }
+        // }
         public void CreatePlayer()
         {
-            Console.Write("Create Account: ");
+            Console.Write("Choose Name: ");
             string playerName = Console.ReadLine();
 
             Console.Write("Create Password: ");
@@ -51,7 +51,7 @@ namespace ZooCombat.PlayerAccount
             return sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
         }
 
-        public void LogInPLayer()
+        public int? LogInPLayer()
         {
             Console.Write("Enter Username: ");
             string playerName = Console.ReadLine();
@@ -75,11 +75,14 @@ namespace ZooCombat.PlayerAccount
             if (playerId is null)
             {
                 Console.WriteLine("Log-In Failed.");
+                return null;
             }
             else
             {
                 Console.WriteLine($"Logged in. PlayerID = {playerId}");
-                CurrentPlayer currentPlayer = new CurrentPlayer(playerId);
+                /*CurrentPlayer currentPlayer = new CurrentPlayer(playerId)*/;
+                return playerId;
+                
             }
         }
     }

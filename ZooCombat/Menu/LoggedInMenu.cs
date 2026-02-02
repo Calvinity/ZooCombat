@@ -4,21 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZooCombat.Entities;
-using ZooCombat.Menu;
 
-namespace ZooCombat.ZooCombatMenu
+namespace ZooCombat.Menu
 {
-    internal class ZooMenucls
+    internal class LoggedInMenu
     {
-        public static bool ZooMenu()
-        //ville/föreslog static men spelar det någon roll? är det någon skillnad mer än att det är enklare att alltid skriva zoomenucls.zoomenu istället för instance.zoomenu?
+        public static bool ZooMenu(int? currentPlayerId)
         {
-            Console.WriteLine("Welcome to ZooCombat!");
+            Console.WriteLine(@"Welcome {currentPlayerId}!");
             Console.WriteLine();
             Console.WriteLine("Menu");
             Console.WriteLine();
-            Console.WriteLine("1 Create Account");
-            Console.WriteLine("2 Log in");
+            Console.WriteLine("1 Animals");
+            Console.WriteLine("2 Pick an animal");
             Console.WriteLine("9 Exit");
             Console.WriteLine("3");
             Console.WriteLine("4");
@@ -29,23 +27,17 @@ namespace ZooCombat.ZooCombatMenu
             {
                 case "1":
                     {
-                        PlayerAcc pa = new PlayerAcc();
-                        pa.CreatePlayer();
+                        Console.WriteLine("not available yet");
                         return true;
                     }
                 case "2":
                     {
-                        PlayerAcc pa = new PlayerAcc();
-                        int? currentPlayerId =pa.LogInPLayer();
-                        if (currentPlayerId != null)
-                        {
-                            LoggedInMenu.ZooMenu(currentPlayerId);
-                        }
+                        Console.WriteLine("not available yet");
                         return true;
                     }
                 case "3":
                     {
-                        
+
                         return true;
                     }
                 case "9":
@@ -62,5 +54,4 @@ namespace ZooCombat.ZooCombatMenu
             }
         }
     }
-
 }
