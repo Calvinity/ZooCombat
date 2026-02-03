@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace ZooCombat.Entities
 {
-    internal class ClsAnimal
+    internal class Animal
     {
         string animalName;
         int animalHP, animalAP, animalSpeed, animalAttack;
 
-        public ClsAnimal(string animalName, int animalHP, int animalAP, int animalSpeed, int animalAttack)
+        public Animal(string animalName, int animalHP, int animalAP, int animalSpeed, int animalAttack)
         {
             this.animalName = animalName;
             this.animalHP = animalHP;
             this.animalAP = animalAP;
             this.animalSpeed = animalSpeed;
             this.animalAttack = animalAttack;
+
+            
         }
     }
 }
